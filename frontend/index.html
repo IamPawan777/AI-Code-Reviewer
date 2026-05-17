@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-Review.AI</title>
+
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"> -->
+
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:slnt@-3&family=Saira+Stencil:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+<body>
+    <!-- HEADER -->
+     <header>
+        <a href="index.html" class="logo">CodeReviewer.AI</a>
+        <nav>
+            <a href="review.html" class="active">Review</a>
+            <a href="history.html">History</a>
+        </nav>
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="fade-in">
+        <div class="card" style="text-align: center; padding: 4rem 2rem;">
+            <h1> Elevate Your Code Quality</h1>
+
+            <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 2rem;">
+                Instant, AI-powered code analysis and optimization. <br>
+                Paste your code or drop a file to get started.
+            </p>
+
+            <div class="file-drop" id="dropZone">
+                <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--primary); margin-bottom: 1rem;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                </svg>
+                <h3> Drop file here or click to upload</h3>
+                <p> Supports .js, .java, .py, .cpp, .txt</p>
+                <input type="file" id="fileInput" accept=".js, .java, .py, .cpp, .txt">
+            </div>
+
+            <div style="position: relative;">
+                <span class="hrsep">OR PASTE CODE</span>
+                <hr style="border: 0; border-top: 1px solid var(--border); margin: 2rem 0;">
+            </div>
+
+            <textarea id="codeArea" placeholder="// Paste your code here..."></textarea>
+
+            <div style="text-align: right">
+                <button class="btn btn-primary" id="analyzeBtn" onclick="submitCode()">
+                    Analyze Code
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+     <script src="script.js"></script>
+
+    
+</body>
+</html>

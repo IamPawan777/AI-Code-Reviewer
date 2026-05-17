@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare-ReviewAI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <!-- HEADER -->
+     <header>
+        <a href="index.html" class="logo">CodeReviewer.AI</a>
+        <nav>
+            <a href="review.html">Review</a>
+            <a href="history.html" class="active">History</a>
+        </nav>
+    </header>
+
+
+    <main class="fade-in">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h1>Version Comparison</h1>
+            <a href="javascript:history.back()" class="btn btn-secondary"> Back</a>
+        </div>
+
+        <div class="card">
+            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                <select id="versionA" class="btn btn-secondary" style="width: 200px;" onchange="updateComparison()">
+                    <option>Select version A</option>
+                </select>
+                <div style="display: flex; align-items: center; color: var(--text-muted);"></div>
+                <select id="versionB" class="btn btn-secondary" style="width: 200px;" onchange="updateComparison()">
+                    <option>Select version B</option>
+                </select>
+            </div>
+
+            <div class="diff-view">
+                <div>
+                    <h4 style="color: var(--danger); margin-bottom: 0.5rem; text-align: center;">Original</h4>
+                    <pre id="codeA" style="white-space: pre-wrap; font-size: 0.8rem;"></pre>
+                </div>
+
+                <div>
+                    <h4 style="color: var(--success); margin-bottom: 0.5rem; text-align: center;">Modified</h4>
+                    <pre id="codeB" style="white-space: pre-wrap; font-size: 0.8rem;"></pre>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadComparisonPage();
+        });
+    </script>
+    
+</body>
+</html>

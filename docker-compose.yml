@@ -1,0 +1,57 @@
+version: '3.8'
+
+services: 
+  backend:
+    build:
+      context: ./backend/code-reviewer-ai
+      dockerfile: Dockerfile
+    container_name: springboot_backend
+    ports:
+      - "9090:9090"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/ai_reviewer
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: IamPawan
+    depends_on:
+      database:
+        condition: service_healthy   
+    networks:
+      - fullstacknetwork
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: basic_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - fullstacknetwork
+
+  database:
+    image: 'mysql:8.0'
+    container_name: mysql_database
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: IamPawan
+      MYSQL_DATABASE: ai_reviewer
+    ports:
+      - "3307:3306"
+    volumes:
+      - fullstackdb:/var/lib/mysql
+    networks:
+      - fullstacknetwork
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -pIamPawan || exit 1"]
+      interval: 20s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  fullstackdb:
+
+networks:
+  fullstacknetwork:
+    driver: bridge

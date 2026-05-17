@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review-Review.AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER -->
+     <header>
+        <a href="index.html" class="logo">CodeReviewer.AI</a>
+        <nav>
+            <a href="review.html">Review</a>
+            <a href="history.html">History</a>
+        </nav>
+    </header>
+
+    <main class="fade-in">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h1>Code Analysis</h1>
+            <div>
+                <span id="versionBadge"
+                    style="background: var(--bg-card); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.9rem; margin-right: 1rem;">
+                Version 1
+                </span>
+                <a href="history.html" class="btn btn-secondary"> Back to History</a>
+            </div>
+        </div>
+
+        <div class="card"> 
+            <h3 style="color: var(--secondary);"> AI Feedback</h3>
+            <div id="loadingAnalysis" style="display: none; padding: 2rem; text-align: center;">
+                <div class="loader"></div> Analyze code...
+            </div>
+            <div id="aiAnalysis" class="analysis-result" style="display: none;"> </div>
+        </div>
+
+        <div class="card">
+            <h3>Original Source Code</h3>
+            <textarea id="codeView" readonly></textarea>
+        </div>
+
+        <div class="card">
+            <h3>Write Impromised Code</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                Edit the code below to submit a new version based on the feedback.
+            </p>
+            <textarea id="newVersionCode" placeholder="// Apply fixes here..."></textarea>
+            <button class="btn btn-primary" id="submitVersionBtn" onclick="submitNewVersion()">Submit New Version</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadReviewPage();
+        });
+    </script>
+    
+</body>
+</html>
